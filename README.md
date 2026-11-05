@@ -1,32 +1,56 @@
 # skill-starter-kit
 
-创建标准 Agent Skill 的起步套件：带注释的 `SKILL.md` 模板 + Skill 发布避坑清单。
+English | [中文](README.zh-CN.md)
 
-配套公众号文章《Skill 发布完全指南：从创建标准 Skill 到 SkillPay 收费》（公众号 smiler488）。
+A starter kit for writing an Agent Skill (the `SKILL.md` format used by Claude Code, Codex, WorkBuddy and others) and getting it published. It contains an annotated `SKILL.md` template, a release checklist for GitHub, SkillHub and SkillPay, and four prompts that walk an assistant through the whole chain. Installed as a skill, it also guides the assistant through drafting, testing and releasing a new one.
 
-## 内容
+It accompanies my WeChat article 《Skill 发布完全指南：从创建标准 Skill 到 SkillPay 收费》 (account smiler488).
 
-| 文件 | 用途 |
-|---|---|
-| `SKILL.md` | 标准 Skill 模板（带注释），含 SkillHub 发布字段说明 |
-| `RELEASE-CHECKLIST.md` | GitHub / SkillHub / SkillPay 三段发布避坑清单 |
-| `install.md` | Agent 一句话安装协议 |
-| `PROMPTS.md` | 四条智能体提示词：总结成 Skill / 发布 GitHub / 上架 SkillHub / 配置 SkillPay |
+## Install
 
-## 用法
+Tell your assistant:
 
-1. 复制 `SKILL.md` 到你的 Skill 文件夹，按注释改写正文与 frontmatter；
-2. 发布前对照 `RELEASE-CHECKLIST.md` 逐项过一遍；
-3. 发布到 SkillHub：`skillhub publish <你的文件夹> --dry-run` 预检后正式发布。
-
-## 给 AI 助理的安装方式
-
-在支持 Skill 的 AI 助理（如 WorkBuddy）里发一句话：
-
+```text
+Install skill-starter-kit following https://raw.githubusercontent.com/smiler488/skill-starter-kit/main/install.md
 ```
-请根据 https://raw.githubusercontent.com/smiler488/skill-starter-kit/main/install.md，安装 skill-starter-kit
+
+Or by hand:
+
+```bash
+git clone --depth 1 https://github.com/smiler488/skill-starter-kit.git ~/.claude/skills/skill-starter-kit
 ```
+
+Start a new session afterwards.
+
+## Use
+
+Ask for a new skill in plain words, e.g. "turn my weekly meeting-notes routine into a skill". The assistant will:
+
+1. ask what the skill does, when it should trigger and where its limits are;
+2. fill in `templates/SKILL.template.md`;
+3. test that it triggers on relevant requests and stays quiet on unrelated ones;
+4. go through `RELEASE-CHECKLIST.md` before anything is published.
+
+Without the skill installed, copy the template and checklist yourself.
+
+| File | Purpose |
+| --- | --- |
+| `SKILL.md` | the skill itself (workflow for creating and releasing a skill) |
+| `templates/SKILL.template.md` | annotated template for a new skill, with SkillHub fields |
+| `RELEASE-CHECKLIST.md` | GitHub / SkillHub / SkillPay checklist with common error codes |
+| `PROMPTS.md` | four prompts: write a skill, publish to GitHub, list on SkillHub, set up SkillPay |
+| `install.md` | install instructions written for an AI assistant |
+
+## Notes
+
+- `name` in SKILL.md must match the folder name, use lowercase letters, digits and hyphens, and the `description` must stay under 1024 characters.
+- Payment platforms change their rules. Check SkillHub's and Alipay's / WeChat Pay's current documentation before charging for a skill.
+
+## Changes in this revision
+
+- The root `SKILL.md` was the blank template itself. Installing the kit therefore loaded a skill named `skill-starter-template` full of placeholders. The template now lives in `templates/`, and the root `SKILL.md` is a working skill named `skill-starter-kit`.
+- `install.md` covers Claude Code, Codex, WorkBuddy, Cursor and Gemini CLI, works without git, and checks the result.
 
 ## License
 
-MIT
+MIT, see [LICENSE](LICENSE). Liangchao Deng (邓良超).

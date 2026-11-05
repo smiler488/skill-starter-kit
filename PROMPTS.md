@@ -74,6 +74,6 @@ https://skillhub.cn/ai/release.md ，CLI 手动流程见 https://skillhub.cn/tut
    参数传递，停在付款确认前。
 3. 提供安装、运行与打包说明；排除密钥、.env、状态文件和 node_modules。
 4. 未经我确认不发起真实付款；缺少信息先向我确认。
-`````
+````
 
 （本提示词改编自 SkillHub 官方 Pay Skill 改造提示词模板：https://skillhub.cn/tutorials#agent-pay-onboard ）
