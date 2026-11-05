@@ -2,6 +2,7 @@
 
 English | [中文](README.zh-CN.md)
 
+[![CI](https://github.com/smiler488/skill-starter-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/smiler488/skill-starter-kit/actions/workflows/validate.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![Agent Skill](https://img.shields.io/badge/Agent_Skill-informational)
 A starter kit for writing an Agent Skill (the `SKILL.md` format used by Claude Code, Codex, WorkBuddy and others) and getting it published. It contains an annotated `SKILL.md` template, a release checklist for GitHub, SkillHub and SkillPay, and four prompts that walk an assistant through the whole chain. Installed as a skill, it also guides the assistant through drafting, testing and releasing a new one.
 
 It accompanies my WeChat article 《Skill 发布完全指南：从创建标准 Skill 到 SkillPay 收费》 (account smiler488).

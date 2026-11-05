@@ -2,6 +2,7 @@
 
 [English](README.md) | 中文
 
+[![CI](https://github.com/smiler488/skill-starter-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/smiler488/skill-starter-kit/actions/workflows/validate.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![Agent Skill](https://img.shields.io/badge/Agent_Skill-informational)
 写 Agent Skill（Claude Code、Codex、WorkBuddy 等工具通用的 `SKILL.md` 格式）并把它发布出去的起步套件，里面有：
 
 - 一份带注释的 `SKILL.md` 模板；
