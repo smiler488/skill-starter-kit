@@ -1,53 +1,45 @@
 ---
-name: skill-starter-template
-description: 创建标准 Agent Skill 的脚手架模板。当用户要新建一个 Skill、把重复工作沉淀成技能、或准备发布 Skill 到 GitHub / SkillHub 时使用。产出符合 Agent Skills 开放约定的目录结构与 SKILL.md，并附 SkillHub 发布所需的 frontmatter 字段。
+name: skill-starter-kit
+description: 帮用户从零写一个标准 Agent Skill 并发布。当用户要新建 Skill、把重复工作整理成 Skill、检查 SKILL.md 是否规范，或准备发布到 GitHub / SkillHub / SkillPay 时使用。Create a new Agent Skill from a template, check it, and prepare it for release on GitHub or SkillHub.
+license: MIT
+metadata:
+  author: Liangchao Deng (smiler488)
+  version: "1.1.0"
 ---
 
-# <你的 Skill 名称>
+# Skill 起步套件
 
-<!-- 正文标题：一句话说清这个 Skill 是干什么的 -->
-
-## Overview
-
-<!-- 两三句话：这个 Skill 解决什么问题、适合什么场景。
-     description 决定 Agent 何时加载本 Skill，正文决定加载后怎么干活。 -->
+把用户的一段重复工作变成一个能被智能体加载的标准 Skill，并按清单完成发布前检查。
 
 ## 何时使用
 
-<!-- 触发条件：用户说什么话、做什么事时应该调用本 Skill。
-     写得越明确，Agent 误触发/漏触发越少。 -->
+- 用户说"帮我做一个 Skill""把这个流程沉淀成技能""这个 SKILL.md 写得对吗"。
+- 用户要把 Skill 发布到 GitHub、SkillHub，或给 Skill 加收费（SkillPay）。
 
 ## 工作流程
 
-<!-- 按步骤写清操作顺序，能给命令就给命令，能给模板就给模板。
-     Agent 是照章办事的"新同事"，SOP 写多细，它就做多细。 -->
-
-1. 第一步……
-2. 第二步……
+1. **问清楚再写。** 向用户问 3–5 个问题：这个 Skill 做什么；用户说什么话时应该触发；具体步骤；哪些事不能做或要先确认；出错怎么回退。信息不够就不要开始生成。
+2. **从模板起稿。** 复制本 Skill 目录下的 `templates/SKILL.template.md` 到新目录 `<skill-name>/SKILL.md`，按注释填写：
+   - `name`：小写字母、数字、连字符，与目录名一致；
+   - `description`：写触发场景，不超过 1024 个字符，这是智能体决定是否加载的唯一依据；
+   - 正文至少包含"何时使用 / 工作流程 / 边界与注意"；脚本放 `scripts/`，参考资料放 `references/`，并在正文里说明何时读取。
+   填完删除所有 `<!-- -->` 注释。
+3. **本地自测。** 把新 Skill 放进用户的 skills 目录（如 `~/.claude/skills/<skill-name>/`），新开会话，分别发一句相关请求和一句无关请求，确认该触发时触发、不该触发时不触发，并把流程完整跑一遍。
+4. **发布前检查。** 逐项对照 `RELEASE-CHECKLIST.md`。重点：仓库里没有任何密钥或 `.env`；README 写清安装和用法；有 LICENSE；打版本标签。
+5. **发布。** 需要时使用 `PROMPTS.md` 里的提示词：发布到 GitHub、上架 SkillHub、接入 SkillPay。建议同时为新仓库写一个 `install.md`，让用户一句话就能让智能体完成安装（可以参照本仓库的 `install.md`）。
 
 ## 边界与注意
 
-<!-- 哪些事不要做、哪些操作需要先向用户确认、出错时怎么回退。 -->
+- 不替用户创建公开仓库、不推送代码、不发起任何付款，除非用户明确要求并确认。
+- 发布前必须全文搜索密钥（API Key、Token、`.env`、缓存文件），发现就停下来告诉用户。
+- SkillHub 的 `slug` 提交后不能修改，确认前要让用户看一眼。
+- 本 Skill 只提供模板和流程，不保证第三方平台（SkillHub、支付宝、微信支付）的规则不变；涉及收费时以平台最新文档为准。
 
-## 目录说明
+## 文件
 
-<!-- 如果本 Skill 带 scripts/、references/ 等子目录，在这里逐个说明用途。 -->
-
-- `scripts/` — 可执行脚本，正文里写清调用方式
-- `references/` — 参考资料，供 Agent 需要时查阅
-
----
-
-<!-- ===== 以下为 SkillHub 发布专用字段说明，发布前替换/删除本注释 =====
-发布到 SkillHub（https://skillhub.cn）时，在 frontmatter 中追加：
-
-slug: your-skill-handle        # 全网唯一，kebab-case（小写字母/数字/连字符），2-128 字符
-                               # 建议带上你的 handle，如 hello-skillhub-zhangsan；提交后不可修改
-displayName: 你的技能展示名
-version: 1.0.0                 # SemVer 格式（主.次.修订）
-summary: 一句话简介，展示在技能列表
-license: MIT                   # 开源许可证
-
-校验命令：skillhub publish <本文件夹> --dry-run
-正式发布：skillhub publish <本文件夹> --changelog "首次发布"
--->
+| 文件 | 用途 |
+| --- | --- |
+| `templates/SKILL.template.md` | 带注释的 SKILL.md 模板，含 SkillHub 字段说明 |
+| `RELEASE-CHECKLIST.md` | GitHub / SkillHub / SkillPay 发布检查清单 |
+| `PROMPTS.md` | 四条可直接发给智能体的提示词 |
+| `install.md` | 给智能体看的安装说明 |
