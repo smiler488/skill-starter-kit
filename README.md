@@ -2,7 +2,7 @@
 
 创建标准 Agent Skill 的起步套件：带注释的 `SKILL.md` 模板 + Skill 发布避坑清单。
 
-配套公众号文章《Skill 全流程指南：创建标准 Skill、上传 GitHub 与 SkillHub、接入 SkillPay 收费》（公众号 smiler488）。
+配套公众号文章《Skill 发布完全指南：从创建标准 Skill 到 SkillPay 收费》（公众号 smiler488）。
 
 ## 内容
 
@@ -11,6 +11,7 @@
 | `SKILL.md` | 标准 Skill 模板（带注释），含 SkillHub 发布字段说明 |
 | `RELEASE-CHECKLIST.md` | GitHub / SkillHub / SkillPay 三段发布避坑清单 |
 | `install.md` | Agent 一句话安装协议 |
+| `PROMPTS.md` | 四条智能体提示词：总结成 Skill / 发布 GitHub / 上架 SkillHub / 配置 SkillPay |
 
 ## 用法
 
